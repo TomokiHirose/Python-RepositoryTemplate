@@ -1,0 +1,21 @@
+name: Ruff
+on:
+  push:
+    branches: [main, feature/*]
+jobs:
+  ruff-format:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Ruff format
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "format"
+          cache-dependencies: pyproject.toml
+      - name: Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style: auto-format code with Ruff"
