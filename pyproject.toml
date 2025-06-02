@@ -12,3 +12,6 @@ dev = [
     "pytest-cov>=6.1.1",
     "ruff>=0.11.12",
 ]
+
+[tool.coverage.run]
+source = ["src"]
